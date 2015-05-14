@@ -1,0 +1,10 @@
+<h1>CAS</h1>
+<p>College Announcement System</p>
+
+<hr>
+<% @posts.each do |p| %>
+  <h2><%= p.title %></h2>
+  <p> Published at <%= p.created_at.strftime('%b %d, %Y') %></p>
+
+<% end %>
+  <%= link_to "New", new_post_path %>

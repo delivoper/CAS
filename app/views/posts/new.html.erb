@@ -1,0 +1,13 @@
+<h1>New Announcement</h1>
+
+<%= simple_form_for :post, url: posts_path do |f| %>
+  <%= f.input :title %><br>
+  <%= f.input :content, as: :text %><br>
+  <%= f.input :deadline, as: :datetime, label: "Deadline :" %>
+
+<p>
+  <%= f.submit %>
+</p>
+
+  <%= link_to "Back", root_path %>
+<% end %>
