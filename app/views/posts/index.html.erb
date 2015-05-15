@@ -7,4 +7,7 @@
   <p> Published at <%= p.created_at.strftime('%b %d, %Y') %></p>
 
 <% end %>
-  <%= link_to "New", new_post_path %>
+
+<% if user_signed_in? %>
+  <%= link_to "New Announcement", new_post_path %>
+<% end %>
