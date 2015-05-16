@@ -162,6 +162,7 @@ DEPENDENCIES
   devise (~> 3.4.1)
   jbuilder (~> 2.0)
   jquery-rails
+  json
   mysql2
   rails (= 4.2.0)
   sass-rails (~> 5.0)

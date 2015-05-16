@@ -46,3 +46,5 @@ end
 gem 'simple_form'
 
 gem 'devise', '~> 3.4.1'
+
+gem 'json'
