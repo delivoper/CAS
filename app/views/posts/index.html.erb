@@ -3,7 +3,7 @@
 
 <hr>
 <% @posts.each do |p| %>
-  <h2>[<%= Lecture.find(p.lecture_id).name %>] <%= p.title %></h2>
+  <h2>[<%= Lecture.find(p.lecture_id).name %>] <%= link_to p.title, p %></h2>
   <p> Published at <%= p.created_at.strftime('%b %d, %Y') %></p>
   <p>>> <%= p.content %> <p>
 
