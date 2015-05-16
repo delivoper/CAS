@@ -10,9 +10,13 @@
 
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
-  
+
 
 <%= yield %>
+<%= link_to "All Posts", root_path %>
+<% Lecture.all.each do |lecture| %>
+  <%= link_to lecture.name, posts_path( lecture: lecture.name) %>
+  <% end %>
 
 </body>
 </html>

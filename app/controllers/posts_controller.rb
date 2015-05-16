@@ -4,7 +4,12 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @posts = Post.all.order("created_at DESC")
+    if params[:lecture].blank?
+      @posts = Post.all.order("created_at DESC")
+    else
+      @lecture_id = Lecture.find_by(name: params[:lecture]).id
+      @posts = Post.where(lecture_id: @lecture_id).order("created_at DESC")
+    end
   end
 
   def show
@@ -31,7 +36,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :content, :deadline)
+    params.require(:post).permit(:title, :content, :deadline, :lecture_id)
 
   end
 
