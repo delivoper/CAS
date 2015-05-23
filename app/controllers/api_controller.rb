@@ -9,8 +9,7 @@ class ApiController < ApplicationController
 
   def show
 
-    @lecture_id = Lecture.find_by(name: params[:lecture]).id
-
+    @lecture_id = Lecture.where(name: params[:lecture])
     @posts = Post.where(lecture_id: @lecture_id).order("created_at DESC")
 
     if @posts.nil?
