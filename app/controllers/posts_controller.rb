@@ -13,6 +13,7 @@ class PostsController < ApplicationController
   end
 
   def show
+    @lecture = Lecture.find(@post.lecture_id)
   end
 
   def new

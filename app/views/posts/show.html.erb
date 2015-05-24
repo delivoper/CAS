@@ -1,11 +1,47 @@
-
-<h1>[<%= Lecture.find(@post.lecture_id).name %>] <%= @post.title %></h1>
-
-<p> <%= @post.content %> </p>
+<!--<p> <%= @post.content %> </p>
 
 <p> <%= @post.deadline %> </p>
 
-<%= link_to "Back", root_path %>
-<%= link_to "Edit", edit_post_path(@post) %>
-<%= link_to "New Announcement", new_post_path %>
+<!--<%= link_to "Back", root_path %>
 <%= link_to "Delete", post_path(@post), method: :delete, data: { confirm: "Are you sure?"} %>
+-->
+<div class="ui stackable grid">
+  <div class="one wide column">
+    <h1><i class="circular announcement icon"></i></h1>
+  </div>
+  <div class="left aligned eleven wide column">
+    <h1>
+      <%= @post.title %>
+    </h1>
+  </div>
+  <% if user_signed_in? %>
+
+    <div class="right aligned two wide column">
+      <%= link_to edit_post_path(@post), class: 'ui tiny fluid orange button' do %>
+      <h4><i class="edit icon"></i> Edit</h4>
+      <% end %>
+    </div>
+    <div class="right aligned two wide column">
+      <%= link_to post_path(@post), method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui tiny fluid red button' do %>
+        <h4><i class="delete icon"></i> Delete</h4>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+<div class="ui breadcrumb">
+  <%= link_to 'CAS', posts_path, class: 'section' %>
+  <i class="right chevron icon divider"></i>
+  <div class="active section"><%= @lecture.name %></div>
+</div>
+
+<div class="ui tall stacked secondary segment">
+  <div class="ui vertical segment">
+      <%= @post.content %>
+  </div>
+  <div class="ui vertical segment">
+      <%= @post.created_at %>
+  </div>
+    </div>
+  </div>
+</div>

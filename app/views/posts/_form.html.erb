@@ -1,8 +1,46 @@
-<%= simple_form_for :post, url: posts_path do |f| %>
-<%= f.input :title %><br>
-<%= f.collection_select :lecture_id, Lecture.all, :id, :name, { promt: "Choose a Lecture" } %>
-<%= f.input :content, as: :text %><br>
-<%= f.input :deadline, as: :datetime, label: "Deadline :" %>
+<%= form_for(@post, html: { class: "ui form" }) do |f| %>
+  <% if @post.errors.any? %>
+  <div class="ui message negative">
+    <div class="header">
+      <%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:
+    </div>
 
-<p> <%= f.submit %> </p>
-<% end %>
+    <ul class="list">
+      <% @post.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+
+  <div class="ui secondary segment">
+    <div class="field">
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+    </div>
+    <div class="field">
+      <%= f.label :content %>
+      <%= f.text_area :content, as: :text%>
+    </div>
+    <div class="four wide field">
+      <%= f.label :deadline %>
+      <%= f.text_field :deadline, id: "datetimepicker" %>
+    </div>
+
+    <div class="four wide field">
+      <%= f.label :lecture_id %>
+      <%= f.collection_select :lecture_id, Lecture.all, :id, :name, class: "ui selection dropdown" %>
+    </div>
+
+
+    <%= f.submit "Create", class: "ui submit blue button"%>
+    <% end %>
+  </div>
+
+  <script type="text/javascript">
+  $(function() {
+    $('#datetimepicker').datetimepicker({
+    });
+  });
+  </script>

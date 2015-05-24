@@ -1,22 +1,120 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Cas</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>College Announcement System</title>
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <%= javascript_include_tag "https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js", "https://oss.maxcdn.com/respond/1.4.2/respond.min.js" %>
+  <![endif]-->
+
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="ui inverted labeled icon left inline vertical sidebar menu">
+    <%= link_to '/', class: 'item' do %>
+      <i class="home icon"></i>
+      Home
+    <% end %>
+  </div>
 
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+  <div class="ui fixed inverted main menu">
+    <a class="item side toggle" href="#">
+      <i class="content icon"></i>
+    </a>
+    <div class="item header">
+      College Announcement System
+    </div>
+  </div>
 
+  <div class="pusher">
+    <div class="page">
+      <% flash.each do |name, msg| %>
+        <%= content_tag :div, class: "ui message #{ name == :error ? "negative" : "positive" }" do %>
+          <i class="close icon"></i>
+          <%= msg %>
+        <% end %>
+      <% end %>
 
-<%= yield %>
-<%= link_to "All Posts", root_path %>
-<% Lecture.all.each do |lecture| %>
-  <%= link_to lecture.name, posts_path( lecture: lecture.name) %>
-  <% end %>
+      <div class="ui primary segment">
+        <%= yield %>
+      </div>
+      <div class="main footer">
+        <div class="ui divider"></div>
 
+        <div class="ui divided horizontal footer link list">
+          <!-- as a last resort -->
+          <div class="item"></div>
+          <div class="item"></div>
+          <div class="item"></div>
+          <div class="item"></div>
+          <div class="item"></div>
+          <div class="item"></div>
+          <div class="item"></div>
+          <div class="item"></div>
+          <div class="item"></div>
+          <div class="item"></div>
+          <div class="item"></div>
+          <div class="item"></div>
+          <div class="item"></div>
+          <div class="item"></div>
+          <div class="item"></div>
+          <div class="item"></div>
+          <div class="item"></div>
+          <div class="item"></div>
+          <div class="item"></div>
+          <div class="item"></div>
+          <div class="item"></div>
+          <div class="item"></div>
+          <div class="item"></div>
+          <div class="item"></div>
+          <div class="item"></div>
+          <div class="item"></div>
+          <div class="item"></div>
+          <div class="item"></div>
+          <div class="item"></div>
+          <div class="item"></div>
+          <div class="item"></div>
+          <div class="item"></div>
+          <div class="item"></div>
+          <div class="item"></div>
+          <div class="item"></div>
+          <div class="item"></div>
+          <div class="item"></div>
+          <div class="item"></div>
+          <div class="item"></div>
+          <div class="item"></div>
+          <div class="item"></div>
+          <div class="item"></div>
+          <div class="item"></div>
+          <div class="item"></div>
+          <div class="item"></div>
+          <div class="item"></div>
+          <div class="item"></div>
+          <div class="item"></div>
+
+          <div class="item">
+            v 0.1.0
+          </div>
+
+          <div class="item">
+            build with &nbsp <i class="heart icon"></i>
+          </div>
+
+          <div class="item">
+            running on &nbsp<i class="linux icon"></i>
+
+          </div>
+          <a href="https://github.com/delivoper/CAS" class="item"> fork me on <i class="github icon"></i></a>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

@@ -13,4 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require semanticui-scaffold
 //= require_tree .
+//= require semantic

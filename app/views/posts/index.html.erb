@@ -1,14 +1,78 @@
-<h1>CAS</h1>
-<p>College Announcement System</p>
+<div class="ui stackable grid">
+  <div class="two wide column">
+  </div>
+  <div class="center aligned ten wide title column">
+    <h2>
+      Announcements
+    </h2>
+  </div>
 
-<hr>
-<% @posts.each do |p| %>
-  <h2>[<%= Lecture.find(p.lecture_id).name %>] <%= link_to p.title, p %></h2>
-  <p> Published at <%= p.created_at.strftime('%b %d, %Y') %></p>
-  <p>>> <%= p.content %> <p>
+  <% if user_signed_in? %>
+    <div class="right aligned four wide column">
+      <div class="ui buttons">
 
-<% end %>
+      <%= link_to 'New', new_post_path, class: 'ui blue green button' %>
+    <div class="or"></div>
+      <%= link_to 'Sign Out', destroy_user_session_path, class: 'ui red button' %>
+    </div>
+</div>
+  <% else %>
+    <div class="right aligned four wide column">
+      <div class="ui buttons">
+      <%= link_to new_user_session_path, class: 'ui blue button' do %>
+      <i class="sign in icon"></i>Sign In
+      <% end %>
 
-<% if user_signed_in? %>
-  <%= link_to "New Announcement", new_post_path %>
+      <div class="or"></div>
+
+      <%= link_to new_user_registration_path, class: 'ui positive button' do %>
+      <i class="signup icon"></i>Sign Up
+      <% end %>
+    </div>
+    </div>
+  <% end %>
+
+</div>
+<% if !@posts.empty? %>
+  <table class="ui striped table">
+    <thead>
+      <tr>
+        <th>Lecture</th>
+        <th>Title</th>
+        <th>Published at</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @posts) do |post| %>
+
+        <td><div class="ui label"><%= Lecture.find(post.lecture_id).name %></div></td>
+        <td><%= post.title %></td>
+        <td><%= post.created_at.strftime('%b %d, %Y') %></td>
+
+        <td class="right aligned">
+
+          <span class="ui icon buttons">
+
+            <%= link_to post, class: 'ui button' do %>
+              <i class="eye icon"></i>
+            <% end %>
+
+            <% if user_signed_in? %>
+
+              <%= link_to edit_post_path(post), class: 'ui blue button' do %>
+                <i class="icon edit"></i>
+              <% end %>
+
+              <%= link_to post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui red button' do %>
+                <i class="icon remove"></i>
+              <% end %>
+            <% end %>
+          </span>
+
+        </td>
+      <% end %>
+    </tbody>
+  </table>
 <% end %>

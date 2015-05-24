@@ -1,6 +1,8 @@
+source 'https://rails-assets.org'
 source 'https://rubygems.org'
 
 
+gem 'bundler', '>= 1.8.4'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 # Use mysql as the database for Active Record
@@ -48,3 +50,6 @@ gem 'simple_form'
 gem 'devise', '~> 3.4.1'
 
 gem 'json'
+gem 'semanticui-generators'
+
+gem 'rails-assets-semantic'

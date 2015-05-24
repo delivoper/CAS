@@ -1,15 +1,29 @@
-<h2>Log in</h2>
+<h2>Sign in</h2>
 
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :email, required: false, autofocus: true %>
-    <%= f.input :password, required: false %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-  </div>
+<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name),html: {class: "ui form"}) do |f| %>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Log in" %>
-  </div>
+<div class="two fields">
+    <div class="ui icon input">
+      <%= f.input :email, required: false, autofocus: true, label: "Email :" %>
+      <i class="user icon"></i>
+    </div>
+
+    <div class="ui icon input">
+      <%= f.input :password, required: false, label: " Password :" %>
+      <i class="lock icon"></i>
+    </div>
+    <div class="ui hidden divider"></div>
+
+    <div class="field">
+    <%= f.input :remember_me, class: "ui checkbox", as: :boolean if devise_mapping.rememberable? %>
+    </div>
+</div>
+
+    <div class="ui hidden divider"></div>
+
+
+    <%= f.button :submit, "Log in", class: "ui submit button" %>
+
 <% end %>
 
 <%= render "devise/shared/links" %>
