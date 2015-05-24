@@ -50,6 +50,5 @@ gem 'simple_form'
 gem 'devise', '~> 3.4.1'
 
 gem 'json'
-gem 'semanticui-generators'
 
 gem 'rails-assets-semantic'

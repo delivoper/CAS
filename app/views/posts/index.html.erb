@@ -13,7 +13,7 @@
 
       <%= link_to 'New', new_post_path, class: 'ui blue green button' %>
     <div class="or"></div>
-      <%= link_to 'Sign Out', destroy_user_session_path, class: 'ui red button' %>
+      <%= link_to 'Sign Out', destroy_user_session_path, :method => :delete, class: 'ui red button' %>
     </div>
 </div>
   <% else %>
