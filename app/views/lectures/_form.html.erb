@@ -1,0 +1,25 @@
+<%= form_for( @lecture, html: { class: "ui form" } ) do |f| %>
+<% if @lecture.errors.any? %>
+<div class="ui message negative">
+  <div class="header">
+    <%= pluralize(@lecture.errors.count, "error") %> prohibited this post from being saved:
+  </div>
+
+  <ul class="list">
+    <% @lecture.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+
+<div class="ui secondary segment">
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <%= f.submit "Create", class: "ui submit blue button"%>
+  <% end %>
+</div>

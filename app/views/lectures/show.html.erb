@@ -1,0 +1,24 @@
+<div class="ui stackable grid">
+  <div class="one wide column">
+    <h1><i class="circular announcement icon"></i></h1>
+  </div>
+  <div class="left aligned eleven wide column">
+    <h1>
+      Lectures
+    </h1>
+  </div>
+</div>
+
+<div class="ui breadcrumb">
+  <%= link_to 'CAS', posts_path, class: 'section' %>
+  <i class="right chevron icon divider"></i>
+  <div class="active section"><%= @lecture.name %></div>
+</div>
+
+<div class="ui tall stacked secondary segment">
+  <div class="ui vertical segment">
+    <%= @lecture.name %>
+  </div>
+</div>
+</div>
+</div>
