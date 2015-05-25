@@ -4,7 +4,12 @@ class ApiController < ApplicationController
 
   def index
     @posts = Post.all
-    respond_with(@posts)
+
+    respond_with (@posts) do |format|
+      format.json { render :json => @posts.as_json(include: { lecture: { only: :name} }, except: [:id, :user_id, :lecture_id] ) }
+
+    end
+
   end
 
   def show
@@ -13,12 +18,18 @@ class ApiController < ApplicationController
     @posts = Post.where(lecture_id: @lecture_id).order("created_at DESC")
 
     if @posts.nil?
-      @error={'error'=>'Book not found'}
+      @error={'error'=>'Announcement not found'}
       respond_with(@error, :status=>:not_found,:callback=>params[:callback])
     else
-      respond_with(@posts, :status=>:ok,:callback=>params[:callback])
+      respond_with (@posts) do |format|
+        format.json { render :json => @posts.as_json(include: { lecture: { only: :name} }, except: [:id, :user_id, :lecture_id] ),
+        :status=>:ok,
+        :callback=>params[:callback] }
+      end
+
     end
 
   end
+
 
 end
